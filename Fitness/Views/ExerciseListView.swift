@@ -4,24 +4,34 @@
 
 import SwiftUI
 
-struct ExerciseListView: View {
+struct WorkoutListView: View {
+    
+    @State var exercises: [ExerciseModel] = [
+        ExerciseModel(name: "Glutes", repetitions: 12, sets: 4, weight: 50, rest: 1),
+        ExerciseModel(name: "Back", repetitions: 12, sets: 4, weight: 50, rest: 1),
+        ExerciseModel(name: "Arms", repetitions: 12, sets: 4, weight: 50, rest: 1)
+    ]
+    
     var body: some View {
         NavigationView {
-            VStack {
                 List {
-                    Text("Glute Workout")
-                }
+                    ForEach(exercises) { exercise in
+                        ListRowView(exercisename: exercise.name)
+                        }
+                    }
                 .navigationTitle("Workouts")
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing:
+                        NavigationLink("Add", destination: AddWorkoutView()))
                 
-                NavigationLink(destination: AddWorkoutView()) {
-                    Text("New Workout")
-                }
             }
             }
         }
-    }
+    
 
 
 #Preview {
-    ExerciseListView()
+    WorkoutListView()
 }
+
