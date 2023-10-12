@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-var exercise1 = ExerciseModel(name: "Glutes", repetitions: 12, sets: 4, weight: 50, rest: 1)
+var exercise1 = ExerciseModel(workout: "Glutes", exercise: "Hip Thrusts", repetitions: "12", sets: "4", weight: "50", rest: "1")
 
 struct ListRowView: View {
     
-    let exercisename: String
+    let workoutname: String
     
     var body: some View {
         HStack {
-            Text(exercisename)
-            NavigationLink(destination: WorkoutView()){
+            Text(workoutname)
+            NavigationLink(destination: ExerciseListView()){
             }
             Spacer()
         }
@@ -24,6 +24,6 @@ struct ListRowView: View {
 }
 
 #Preview {
-    ListRowView(exercisename: exercise1.name)
+    ListRowView(workoutname: exercise1.workout)
 }
 

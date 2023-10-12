@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct WorkoutView: View {
+struct ExerciseView: View {
     var body: some View {
         VStack {
-            Text("Workout View")
+            Text("Exercise View")
         }
         
     }
 }
 
 #Preview {
-    WorkoutView()
+    ExerciseView()
 }

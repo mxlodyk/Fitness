@@ -8,29 +8,19 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
+            VStack (spacing: 20){
                 Image("VitalFit Logo")
                     .padding(.bottom, 20)
                 NavigationLink(destination: WorkoutListView()) {
                     Text("EXERCISE")
-                        .font(.headline)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(hue: 0.591, saturation: 0.395, brightness: 1.0))
-                        .cornerRadius(10)
+                        .withButtonFormatting()
                 }
                 NavigationLink(destination: NutritionListView()) {
                     Text("NUTRITION")
-                        .font(.headline)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(hue: 0.591, saturation: 0.395, brightness: 1.0))
-                        .cornerRadius(10)
+                        .withButtonFormatting()
                 }
             }
-            .padding(16)
+            .padding()
         }
         .padding(.bottom, 500)
     }

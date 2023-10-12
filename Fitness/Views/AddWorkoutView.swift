@@ -6,31 +6,23 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     
-    @State var textFieldText: String = ""
+    @State var newName : String
+    @EnvironmentObject var listViewModel: ListViewModel
+    let themeColour = Color(hue: 0.591, saturation: 0.395, brightness: 1.0)
     
     var body: some View {
         ScrollView{
             Image("New Workout")
             Text("NAME")
-                .font(.headline)
-                .foregroundColor(Color(hue: 0.591, saturation: 0.395, brightness: 1.0))
+                .withTextFormatting()
                 .padding(.bottom, -50)
             VStack {
-                TextField(" ", text: $textFieldText)
-                    .foregroundColor(Color(hue: 0.591, saturation: 0.67, brightness: 0.994))
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(hue: 0.591, saturation: 0.155, brightness: 0.98))
-                    .cornerRadius(10)
+                TextField("", text: $newName)
+                    .withTextFieldFormatting()
                 
-                NavigationLink(destination: AddExercisesView()){
+                NavigationLink(destination: AddExercisesView(newName: $newName)){
                     Text("Save".uppercased())
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                        .font(.headline)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(hue: 0.591, saturation: 0.395, brightness: 1.0))
-                        .cornerRadius(10)
+                        .withButtonFormatting()
                 }
             }
             .padding(16)
@@ -40,6 +32,7 @@ struct AddWorkoutView: View {
 
 #Preview {
     NavigationView{
-        AddWorkoutView()
+        AddWorkoutView(newName: "")
     }
+    .environmentObject(ListViewModel())
 }
